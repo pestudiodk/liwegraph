@@ -1,7 +1,7 @@
 // @ts-nocheck
 import assert from "node:assert/strict";
 import test from "node:test";
-import { liweGraphExtension, liweGraphKind, liweGraphMimeType, type LiweGraph, type LiweGraphDataGroup, type LiweGraphLayoutGroup } from "../src/model/liwegraph.ts";
+import { liweGraphExtension, liweGraphKind, liweGraphMimeType, type LiweGraph, type LiweGraphLayoutGroup } from "../src/model/liwegraph.ts";
 import { CanonicalLiweGraphParser } from "../src/model/liwegraph-parser.ts";
 import { CanonicalLiweGraphValidator } from "../src/model/liwegraph-validator.ts";
 import { liweGraphLayoutMaterialiser } from "../src/layout-materialisation/elk-layout-materialiser.ts";

@@ -3,10 +3,10 @@ import test from "node:test";
 import { GraphCenter } from "../src/renderer/graph-center.ts";
 
 test("graph centering corrects delayed mobile layout and scroll restoration", (): void => {
-  const previousAnimationFrame: (callback: FrameRequestCallback) => number = globalThis.requestAnimationFrame;
+  const previousAnimationFrame = globalThis.requestAnimationFrame;
   const previousCancelAnimationFrame: (handle: number) => void = globalThis.cancelAnimationFrame;
-  const frames: FrameRequestCallback[] = [];
-  globalThis.requestAnimationFrame = (callback: FrameRequestCallback): number => {
+  const frames: Array<(time: number) => void> = [];
+  globalThis.requestAnimationFrame = (callback: (time: number) => void): number => {
     frames.push(callback);
     return frames.length;
   };

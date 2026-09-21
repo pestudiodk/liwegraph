@@ -28,7 +28,7 @@ test("render script can skip layout validation and materialise a LIWE Graph as s
     await assert.rejects(() => new ValidateCommand().run(inputPath, false), /does not contain layout/);
     await new ValidateCommand().run(inputPath, true);
     await new MaterialiseCommand().run(inputPath, materialisedPath);
-    assert.match(await readFile(materialisedPath, "utf8"), /\"layout\"/);
+    assert.match(await readFile(materialisedPath, "utf8"), /"layout"/);
     await assert.rejects(() => new RenderCommand().run(inputPath, svgPath, {}), /does not contain layout/);
     await new RenderCommand().run(inputPath, svgPath, { skipLayout: true });
     const svg: string = await readFile(svgPath, "utf8");

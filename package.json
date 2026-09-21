@@ -19,22 +19,55 @@
     "liwegraph": "./build/cli/liwegraph-cli.js"
   },
   "exports": {
-    ".": { "types": "./src/liwegraph-tool.ts", "import": "./build/liwegraph-tool.js" },
-    "./model/liwegraph": { "types": "./src/model/liwegraph.ts", "import": "./build/model/liwegraph.js" },
-    "./model/liwegraph-parser": { "types": "./src/model/liwegraph-parser.ts", "import": "./build/model/liwegraph-parser.js" },
-    "./model/liwegraph-validator": { "types": "./src/model/liwegraph-validator.ts", "import": "./build/model/liwegraph-validator.js" },
-    "./renderer/renderer": { "types": "./src/renderer/renderer.ts", "import": "./build/renderer/renderer.js" },
-    "./renderer/preview": { "types": "./src/renderer/preview.ts", "import": "./build/renderer/preview.js" },
-    "./renderer/standalone-svg-renderer": { "types": "./src/renderer/standalone-svg-renderer.ts", "import": "./build/renderer/standalone-svg-renderer.js" },
-    "./layout-materialisation/layout-materialiser": { "types": "./src/layout-materialisation/layout-materialiser.ts", "import": "./build/layout-materialisation/layout-materialiser.js" },
-    "./layout-materialisation/elk-layout-materialiser": { "types": "./src/layout-materialisation/elk-layout-materialiser.ts", "import": "./build/layout-materialisation/elk-layout-materialiser.js" },
-    "./liwegraph-tool": { "types": "./src/liwegraph-tool.ts", "import": "./build/liwegraph-tool.js" }
+    ".": {
+      "types": "./src/liwegraph-tool.ts",
+      "import": "./build/liwegraph-tool.js"
+    },
+    "./model/liwegraph": {
+      "types": "./src/model/liwegraph.ts",
+      "import": "./build/model/liwegraph.js"
+    },
+    "./model/liwegraph-parser": {
+      "types": "./src/model/liwegraph-parser.ts",
+      "import": "./build/model/liwegraph-parser.js"
+    },
+    "./model/liwegraph-validator": {
+      "types": "./src/model/liwegraph-validator.ts",
+      "import": "./build/model/liwegraph-validator.js"
+    },
+    "./renderer/renderer": {
+      "types": "./src/renderer/renderer.ts",
+      "import": "./build/renderer/renderer.js"
+    },
+    "./renderer/preview": {
+      "types": "./src/renderer/preview.ts",
+      "import": "./build/renderer/preview.js"
+    },
+    "./renderer/standalone-svg-renderer": {
+      "types": "./src/renderer/standalone-svg-renderer.ts",
+      "import": "./build/renderer/standalone-svg-renderer.js"
+    },
+    "./layout-materialisation/layout-materialiser": {
+      "types": "./src/layout-materialisation/layout-materialiser.ts",
+      "import": "./build/layout-materialisation/layout-materialiser.js"
+    },
+    "./layout-materialisation/elk-layout-materialiser": {
+      "types": "./src/layout-materialisation/elk-layout-materialiser.ts",
+      "import": "./build/layout-materialisation/elk-layout-materialiser.js"
+    },
+    "./liwegraph-tool": {
+      "types": "./src/liwegraph-tool.ts",
+      "import": "./build/liwegraph-tool.js"
+    }
   },
   "scripts": {
-    "build": "node scripts/build.ts",
+    "build": "npm run typecheck && npm run lint && npm run lint:security && node scripts/build.ts",
     "render:svg": "node build/cli/liwegraph-cli.js render",
     "typecheck": "tsc --noEmit",
-    "test": "npm run build && npm run typecheck && node --import tsx --test \"tests/**/*.test.ts\"",
+    "lint": "eslint .",
+    "lint:security": "semgrep scan --config security/semgrep/p-default.yml --error --metrics off --jobs 1 --timeout 5 --max-target-bytes 1000000 --exclude build --exclude node_modules --exclude .git --exclude .liwe src scripts eslint.config.js",
+    "test": "npm run build && node --import tsx --test \"tests/**/*.test.ts\"",
+    "pack:check": "npm run build && npm pack --dry-run",
     "prepack": "npm run test"
   },
   "dependencies": {
@@ -42,11 +75,17 @@
     "jsdom": "^30.0.1"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.5",
     "@types/jsdom": "^30.0.0",
     "@types/node": "^26.3.0",
     "esbuild": "^0.25.12",
+    "eslint": "^9.39.5",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-sonarjs": "^4.2.1",
+    "globals": "^14.0.0",
     "tsx": "^4.23.12",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.70.0"
   },
   "engines": {
     "node": ">=24"

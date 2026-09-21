@@ -3,7 +3,6 @@ import type {
   LiweGraph,
   LiweGraphBox,
   LiweGraphDataEdge,
-  LiweGraphDataNode,
   LiweGraphPoint,
   LiweGraphDataGroup,
   LiweGraphLayout,

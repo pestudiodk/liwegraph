@@ -598,14 +598,6 @@ export class CanonicalLiweGraphMounter implements LiweGraphMounter {
 
 export const liweGraphMounter: LiweGraphMounter = new CanonicalLiweGraphMounter();
 
-function mountLiweGraph(
-  document: LiweGraph,
-  container: LiweGraphMountContainer,
-  options: RenderLiweGraphOptions = {},
-): Promise<RenderedLiweGraph> {
-  return liweGraphMounter.mount(document, container, options);
-}
-
 function renderLiweGraph(
   result: LiweGraphPreview,
   container: LiweGraphMountContainer,
