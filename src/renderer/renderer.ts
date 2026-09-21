@@ -1,7 +1,7 @@
 import { GraphCenter } from "./graph-center.js";
 import { liweGraphPreviewParser } from "./preview.js";
 import { liweGraphValidator } from "../model/liwegraph-validator.js";
-import { liweGraphLayoutMaterialiser } from "../layout-materialisation/elk-layout-materialiser.js";
+import { liweGraphLayoutMaterialiser } from "../layout-materialisation/canonical-layout-materialiser.js";
 import { appendEdgeLabel } from "./edge-label.js";
 import { AppearanceStyle } from "./appearance-style.js";
 import { liweGraphRendererCss } from "./renderer-css.js";

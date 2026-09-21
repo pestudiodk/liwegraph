@@ -1,5 +1,7 @@
 # Changelog
 
-## [1.0.0] - Unreleased
+## [1.0.0] - 2026-09-21
 
-- Released the first standalone package of LIWE Graph.
+- Initial public release of the standalone LIWE Graph npm package.
+- Published the versioned format, strict parser and validator, deterministic
+  layout materialiser, browser renderer, standalone SVG renderer, and CLI.

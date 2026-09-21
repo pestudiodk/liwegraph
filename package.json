@@ -2,14 +2,30 @@
   "name": "@pestudiodk/liwegraph",
   "version": "1.0.0",
   "description": "Portable LIWE Graph format, parser, validator, presentation materialiser, and renderer.",
+  "author": "PE Studio",
   "license": "Apache-2.0",
+  "homepage": "https://github.com/pestudiodk/liwegraph#readme",
+  "keywords": [
+    "liwegraph",
+    "graph",
+    "json",
+    "visualization",
+    "svg",
+    "typescript"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
+  "types": "./src/liwegraph-tool.ts",
   "files": [
     "build/",
     "src/",
     "docs/",
     "examples/",
     "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "SECURITY.md",
     "LICENSE",
     "NOTICE",
     "ELKJS-LICENSE.md",
@@ -51,9 +67,9 @@
       "types": "./src/layout-materialisation/layout-materialiser.ts",
       "import": "./build/layout-materialisation/layout-materialiser.js"
     },
-    "./layout-materialisation/elk-layout-materialiser": {
-      "types": "./src/layout-materialisation/elk-layout-materialiser.ts",
-      "import": "./build/layout-materialisation/elk-layout-materialiser.js"
+    "./layout-materialisation/canonical-layout-materialiser": {
+      "types": "./src/layout-materialisation/canonical-layout-materialiser.ts",
+      "import": "./build/layout-materialisation/canonical-layout-materialiser.js"
     },
     "./liwegraph-tool": {
       "types": "./src/liwegraph-tool.ts",
@@ -65,7 +81,7 @@
     "render:svg": "node build/cli/liwegraph-cli.js render",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
-    "lint:security": "semgrep scan --config security/semgrep/p-default.yml --error --metrics off --jobs 1 --timeout 5 --max-target-bytes 1000000 --exclude build --exclude node_modules --exclude .git --exclude .liwe src scripts eslint.config.js",
+    "lint:security": "node --import tsx scripts/semgrep.ts",
     "test": "npm run build && node --import tsx --test \"tests/**/*.test.ts\"",
     "pack:check": "npm run build && npm pack --dry-run",
     "prepack": "npm run test"

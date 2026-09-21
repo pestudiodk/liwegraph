@@ -1,4 +1,4 @@
-import { CanonicalLiweGraphLayoutMaterialiser } from "./layout-materialisation/elk-layout-materialiser.js";
+import { CanonicalLiweGraphLayoutMaterialiser } from "./layout-materialisation/canonical-layout-materialiser.js";
 import type { LiweGraphLayoutMaterialiserOptions, LiweGraphRouting } from "./layout-materialisation/layout-materialiser.js";
 import {
   CanonicalLiweGraphMounter,

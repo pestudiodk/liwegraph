@@ -4,7 +4,7 @@ import test from "node:test";
 import { liweGraphExtension, liweGraphKind, liweGraphMimeType, type LiweGraph, type LiweGraphLayoutGroup } from "../src/model/liwegraph.ts";
 import { CanonicalLiweGraphParser } from "../src/model/liwegraph-parser.ts";
 import { CanonicalLiweGraphValidator } from "../src/model/liwegraph-validator.ts";
-import { liweGraphLayoutMaterialiser } from "../src/layout-materialisation/elk-layout-materialiser.ts";
+import { liweGraphLayoutMaterialiser } from "../src/layout-materialisation/canonical-layout-materialiser.ts";
 
 const parser = new CanonicalLiweGraphParser();
 const validator = new CanonicalLiweGraphValidator();

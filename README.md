@@ -2,9 +2,29 @@
 
 LIWE Graph is a portable JSON graph format designed so LLMs can effectively create and modify semantic graph data while layout and appearance remain separate. This package owns the versioned format, TypeScript model, strict parser and validator, deterministic layout materialiser, and dependency-free browser renderer.
 
+## Installation
+
+```sh
+npm install @pestudiodk/liwegraph
+```
+
+The package is an ESM package. The CLI and standalone SVG renderer require
+Node.js 24 or newer. The browser renderer is bundled and does not require a
+runtime dependency in the browser.
+
 ## Exports
 
-- `@pestudiodk/liwegraph`: model, parser, validator, layout materialiser, DOM mounter, preview parser, and self-styled interactive DOM/SVG renderer
+The package intentionally exposes direct modules rather than a barrel export:
+
+- `@pestudiodk/liwegraph`: canonical tool facade
+- `@pestudiodk/liwegraph/model/liwegraph`: model and format constants
+- `@pestudiodk/liwegraph/model/liwegraph-parser`: strict parser
+- `@pestudiodk/liwegraph/model/liwegraph-validator`: validator
+- `@pestudiodk/liwegraph/layout-materialisation/layout-materialiser`: materialiser contract
+- `@pestudiodk/liwegraph/layout-materialisation/canonical-layout-materialiser`: canonical materialiser
+- `@pestudiodk/liwegraph/renderer/renderer`: browser DOM/SVG renderer
+- `@pestudiodk/liwegraph/renderer/preview`: validated preview parser
+- `@pestudiodk/liwegraph/renderer/standalone-svg-renderer`: Node.js SVG renderer
 
 ```ts
 import {
@@ -58,3 +78,14 @@ npm run render:svg -- graph.liwegraph graph.svg
 The renderer installs its canonical stylesheet once per document and marks its host with `liwegraph-host`. Applications can supply selection/open callbacks and their own zoom host behavior without coupling graph semantics to navigation.
 
 See [`docs/format.md`](docs/format.md) for the authoritative format contract and [`docs/canonical-tool.md`](docs/canonical-tool.md) for the canonical implementation and CLI.
+
+## License
+
+LIWE Graph is licensed under Apache-2.0. See [`NOTICE`](NOTICE) for required
+bundled dependency attribution.
+
+## Contribution status
+
+External contributions are not being accepted yet. See
+[`CONTRIBUTING.md`](CONTRIBUTING.md) for the current policy and
+[`SECURITY.md`](SECURITY.md) for private vulnerability reporting.
