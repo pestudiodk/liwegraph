@@ -1,0 +1,58 @@
+{
+  "name": "@pestudiodk/liwegraph",
+  "version": "1.0.0",
+  "description": "Portable LIWE Graph format, parser, validator, presentation materialiser, and renderer.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "files": [
+    "build/",
+    "src/",
+    "docs/",
+    "examples/",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "ELKJS-LICENSE.md",
+    "README.md"
+  ],
+  "bin": {
+    "liwegraph": "./build/cli/liwegraph-cli.js"
+  },
+  "exports": {
+    ".": { "types": "./src/liwegraph-tool.ts", "import": "./build/liwegraph-tool.js" },
+    "./model/liwegraph": { "types": "./src/model/liwegraph.ts", "import": "./build/model/liwegraph.js" },
+    "./model/liwegraph-parser": { "types": "./src/model/liwegraph-parser.ts", "import": "./build/model/liwegraph-parser.js" },
+    "./model/liwegraph-validator": { "types": "./src/model/liwegraph-validator.ts", "import": "./build/model/liwegraph-validator.js" },
+    "./renderer/renderer": { "types": "./src/renderer/renderer.ts", "import": "./build/renderer/renderer.js" },
+    "./renderer/preview": { "types": "./src/renderer/preview.ts", "import": "./build/renderer/preview.js" },
+    "./renderer/standalone-svg-renderer": { "types": "./src/renderer/standalone-svg-renderer.ts", "import": "./build/renderer/standalone-svg-renderer.js" },
+    "./layout-materialisation/layout-materialiser": { "types": "./src/layout-materialisation/layout-materialiser.ts", "import": "./build/layout-materialisation/layout-materialiser.js" },
+    "./layout-materialisation/elk-layout-materialiser": { "types": "./src/layout-materialisation/elk-layout-materialiser.ts", "import": "./build/layout-materialisation/elk-layout-materialiser.js" },
+    "./liwegraph-tool": { "types": "./src/liwegraph-tool.ts", "import": "./build/liwegraph-tool.js" }
+  },
+  "scripts": {
+    "build": "node scripts/build.ts",
+    "render:svg": "node build/cli/liwegraph-cli.js render",
+    "typecheck": "tsc --noEmit",
+    "test": "npm run build && npm run typecheck && node --import tsx --test \"tests/**/*.test.ts\"",
+    "prepack": "npm run test"
+  },
+  "dependencies": {
+    "elkjs": "0.12.0",
+    "jsdom": "^30.0.1"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^30.0.0",
+    "@types/node": "^26.3.0",
+    "esbuild": "^0.25.12",
+    "tsx": "^4.23.12",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pestudiodk/liwegraph.git"
+  }
+}

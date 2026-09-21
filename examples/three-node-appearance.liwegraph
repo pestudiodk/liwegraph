@@ -1,0 +1,47 @@
+{
+  "kind": "liwegraph/v1",
+  "data": {
+    "groups": [
+      { "id": "alpha-group", "label": "Alpha group", "nodes": ["alpha"], "groups": [] },
+      { "id": "beta-group", "label": "Beta group", "nodes": ["beta"], "groups": [] },
+      { "id": "gamma-group", "label": "Gamma group", "nodes": ["gamma"], "groups": [] }
+    ],
+    "nodes": [
+      { "id": "alpha", "label": "Alpha" },
+      { "id": "beta", "label": "Beta" },
+      { "id": "gamma", "label": "Gamma" }
+    ],
+    "edges": [
+      { "from": "alpha", "to": "beta", "index": 1, "label": "Alpha to Beta" },
+      { "from": "alpha", "to": "gamma", "index": 1, "kind": "alternate", "label": "Alpha to Gamma" },
+      { "from": "beta", "to": "gamma", "index": 1, "label": "Beta to Gamma" }
+    ]
+  },
+  "layout": null,
+  "appearance": {
+    "global": {
+      "background": "#030712",
+      "node": { "strokeWidth": 2, "text": "#f8fafc" },
+      "edge": { "stroke": "#64748b", "text": "#e2e8f0", "arrow": "triangle" },
+      "group": { "line": "dashed", "strokeWidth": 2, "text": "#e2e8f0" },
+      "edgeStyles": { "alternate": { "stroke": "#f59e0b", "line": "dashed" } },
+      "legend": [
+        { "type": "node", "marker": "alpha", "label": "Alpha node", "style": { "fill": "#2563eb", "stroke": "#bfdbfe" } },
+        { "type": "node", "marker": "beta", "label": "Beta node", "style": { "fill": "#16a34a", "stroke": "#bbf7d0" } },
+        { "type": "node", "marker": "gamma", "label": "Gamma node", "style": { "fill": "#dc2626", "stroke": "#fecaca" } },
+        { "type": "edge", "marker": "alternate", "label": "Alternate relationship", "style": { "stroke": "#f59e0b", "line": "dashed" } }
+      ]
+    },
+    "nodes": {
+      "alpha": { "fill": "#2563eb", "stroke": "#bfdbfe" },
+      "beta": { "fill": "#16a34a", "stroke": "#bbf7d0" },
+      "gamma": { "fill": "#dc2626", "stroke": "#fecaca" }
+    },
+    "groups": {
+      "alpha-group": { "fill": "#172554", "stroke": "#60a5fa" },
+      "beta-group": { "fill": "#052e16", "stroke": "#4ade80" },
+      "gamma-group": { "fill": "#450a0a", "stroke": "#f87171" }
+    },
+    "edges": {}
+  }
+}

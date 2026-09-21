@@ -1,0 +1,10 @@
+LIWE Graph
+Copyright 2026 PE Studio
+
+LIWE Graph is distributed under the Apache License, Version 2.0.
+
+LIWE Graph bundles elkjs 0.12.0, the JavaScript distribution of the Eclipse
+Layout Kernel, by Ulf Rüegg and ELK contributors. elkjs is available under
+the Eclipse Public License 2.0 or GNU General Public License 3.0 or later.
+LIWE Graph distributes it under the Eclipse Public License 2.0; see
+ELKJS-LICENSE.md in the package.

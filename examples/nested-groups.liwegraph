@@ -1,0 +1,30 @@
+{
+  "kind": "liwegraph/v1",
+  "data": {
+    "groups": [
+      { "id": "platform", "label": "Platform", "nodes": ["gateway"], "groups": ["runtime"] },
+      { "id": "runtime", "label": "Runtime", "nodes": ["api", "worker"], "groups": [] }
+    ],
+    "nodes": [
+      { "id": "gateway", "label": "Gateway" },
+      { "id": "api", "label": "API" },
+      { "id": "worker", "label": "Worker" }
+    ],
+    "edges": [
+      { "from": "gateway", "to": "api", "index": 1, "label": "forwards" },
+      { "from": "api", "to": "worker", "index": 1, "label": "dispatches" }
+    ]
+  },
+  "layout": null,
+  "appearance": {
+    "global": {
+      "background": "white",
+      "node": { "fill": "white", "stroke": "black", "text": "black", "strokeWidth": 2 },
+      "edge": { "fill": "white", "stroke": "black", "text": "black", "arrow": "triangle" },
+      "group": { "fill": "white", "stroke": "black", "text": "black", "strokeWidth": 2 }
+    },
+    "groups": {},
+    "nodes": {},
+    "edges": {}
+  }
+}

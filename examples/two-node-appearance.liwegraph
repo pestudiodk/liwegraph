@@ -1,0 +1,40 @@
+{
+  "kind": "liwegraph/v1",
+  "data": {
+    "groups": [
+      { "id": "red-group", "label": "Red", "nodes": ["source"], "groups": [] },
+      { "id": "blue-group", "label": "Blue", "nodes": ["target"], "groups": [] }
+    ],
+    "nodes": [
+      { "id": "source", "label": "Red" },
+      { "id": "target", "label": "Blue" }
+    ],
+    "edges": [
+      { "from": "source", "to": "target", "index": 1, "kind": "solid-link", "label": "Solid link" },
+      { "from": "source", "to": "target", "index": 2, "kind": "dashed-link", "label": "Dashed link" }
+    ]
+  },
+  "layout": null,
+  "appearance": {
+    "global": {
+      "background": "#030712",
+      "node": { "strokeWidth": 2, "text": "#f8fafc" },
+      "edge": { "stroke": "#64748b", "text": "#e2e8f0", "arrow": "triangle" },
+      "group": { "line": "dashed", "strokeWidth": 2, "text": "#e2e8f0" },
+      "edgeStyles": { "dashed-link": { "line": "dashed", "stroke": "#f59e0b" } },
+      "legend": [
+        { "type": "node", "marker": "source", "label": "Source node", "style": { "fill": "#dc2626", "stroke": "#fecaca" } },
+        { "type": "edge", "marker": "dashed-link", "label": "Dashed link", "style": { "line": "dashed", "stroke": "#f59e0b" } }
+      ]
+    },
+    "nodes": {
+      "source": { "fill": "#dc2626", "stroke": "#fecaca" },
+      "target": { "fill": "#2563eb", "stroke": "#bfdbfe" }
+    },
+    "groups": {
+      "red-group": { "fill": "#450a0a", "stroke": "#fca5a5" },
+      "blue-group": { "fill": "#172554", "stroke": "#60a5fa" }
+    },
+    "edges": {}
+  }
+}
