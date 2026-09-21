@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
-import { CanonicalLiweGraphLayoutMaterialiser } from "../src/layout-materialisation/elk-layout-materialiser.ts";
+import { CanonicalLiweGraphLayoutMaterialiser } from "../src/layout-materialisation/canonical-layout-materialiser.ts";
 import { CanonicalLiweGraphMounter } from "../src/renderer/renderer.ts";
 import { CanonicalLiweGraphParser } from "../src/model/liwegraph-parser.ts";
 import { CanonicalLiweGraphValidator } from "../src/model/liwegraph-validator.ts";

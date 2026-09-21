@@ -27,6 +27,15 @@ jobs:
           package-manager-cache: false
           registry-url: https://registry.npmjs.org
       - run: npm ci
+      - name: Cache Semgrep packages
+        uses: actions/cache@5a3ec84eff668545fd18022155c47e93e2684 # v4.2.3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-semgrep-1.175.0
+      - name: Install Semgrep
+        run: |
+          python3 -m pip install --user semgrep==1.175.0
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
       - run: npm test
       - name: Pack exact release tarball
         run: |
