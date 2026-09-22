@@ -6,7 +6,7 @@ import tseslint from "typescript-eslint";
 
 export default [
   {
-    ignores: ["build/**", "node_modules/**", ".liwe/**"],
+    ignores: ["build/**", "node_modules/**", ".liwe/**", "npm-package-preview/**"],
   },
   eslint.configs.recommended,
   {

@@ -2,45 +2,289 @@
   "kind": "liwegraph/v1",
   "data": {
     "groups": [
-      { "id": "alpha-group", "label": "Alpha group", "nodes": ["alpha"], "groups": [] },
-      { "id": "beta-group", "label": "Beta group", "nodes": ["beta"], "groups": [] },
-      { "id": "gamma-group", "label": "Gamma group", "nodes": ["gamma"], "groups": [] }
+      {
+        "id": "alpha-group",
+        "label": "Alpha group",
+        "nodes": [
+          "alpha"
+        ],
+        "groups": []
+      },
+      {
+        "id": "beta-group",
+        "label": "Beta group",
+        "nodes": [
+          "beta"
+        ],
+        "groups": []
+      },
+      {
+        "id": "gamma-group",
+        "label": "Gamma group",
+        "nodes": [
+          "gamma"
+        ],
+        "groups": []
+      }
     ],
     "nodes": [
-      { "id": "alpha", "label": "Alpha" },
-      { "id": "beta", "label": "Beta" },
-      { "id": "gamma", "label": "Gamma" }
+      {
+        "id": "alpha",
+        "label": "Alpha"
+      },
+      {
+        "id": "beta",
+        "label": "Beta"
+      },
+      {
+        "id": "gamma",
+        "label": "Gamma"
+      }
     ],
     "edges": [
-      { "from": "alpha", "to": "beta", "index": 1, "label": "Alpha to Beta" },
-      { "from": "alpha", "to": "gamma", "index": 1, "kind": "alternate", "label": "Alpha to Gamma" },
-      { "from": "beta", "to": "gamma", "index": 1, "label": "Beta to Gamma" }
+      {
+        "from": "alpha",
+        "to": "beta",
+        "index": 1,
+        "label": "Alpha to Beta"
+      },
+      {
+        "from": "alpha",
+        "to": "gamma",
+        "index": 1,
+        "kind": "alternate",
+        "label": "Alpha to Gamma"
+      },
+      {
+        "from": "beta",
+        "to": "gamma",
+        "index": 1,
+        "label": "Beta to Gamma"
+      }
     ]
   },
-  "layout": null,
+  "layout": {
+    "global": {
+      "width": 1005.2,
+      "height": 264
+    },
+    "groups": [
+      {
+        "id": "alpha-group",
+        "x": 24,
+        "y": 33.67,
+        "width": 180,
+        "height": 122
+      },
+      {
+        "id": "beta-group",
+        "x": 400.6,
+        "y": 24,
+        "width": 180,
+        "height": 122
+      },
+      {
+        "id": "gamma-group",
+        "x": 777.2,
+        "y": 33.67,
+        "width": 180,
+        "height": 122
+      }
+    ],
+    "nodes": [
+      {
+        "id": "alpha",
+        "x": 48,
+        "y": 73.67,
+        "width": 128,
+        "height": 58
+      },
+      {
+        "id": "beta",
+        "x": 424.6,
+        "y": 64,
+        "width": 128,
+        "height": 58
+      },
+      {
+        "id": "gamma",
+        "x": 801.2,
+        "y": 73.67,
+        "width": 128,
+        "height": 58
+      }
+    ],
+    "edges": [
+      {
+        "from": "alpha",
+        "to": "beta",
+        "index": 1,
+        "points": [
+          [
+            176,
+            93
+          ],
+          [
+            424.6,
+            93
+          ]
+        ],
+        "label": {
+          "x": 257,
+          "y": 60,
+          "width": 90.6,
+          "height": 22
+        }
+      },
+      {
+        "from": "alpha",
+        "to": "gamma",
+        "index": 1,
+        "points": [
+          [
+            176,
+            112.33
+          ],
+          [
+            219,
+            112.33
+          ],
+          [
+            219,
+            178
+          ],
+          [
+            734.2,
+            178
+          ],
+          [
+            734.2,
+            112.33
+          ],
+          [
+            801.2,
+            112.33
+          ]
+        ],
+        "label": {
+          "x": 442.2,
+          "y": 189,
+          "width": 96.8,
+          "height": 22
+        }
+      },
+      {
+        "from": "beta",
+        "to": "gamma",
+        "index": 1,
+        "points": [
+          [
+            552.6,
+            93
+          ],
+          [
+            801.2,
+            93
+          ]
+        ],
+        "label": {
+          "x": 633.6,
+          "y": 60,
+          "width": 90.6,
+          "height": 22
+        }
+      }
+    ]
+  },
   "appearance": {
     "global": {
       "background": "#030712",
-      "node": { "strokeWidth": 2, "text": "#f8fafc" },
-      "edge": { "stroke": "#64748b", "text": "#e2e8f0", "arrow": "triangle" },
-      "group": { "line": "dashed", "strokeWidth": 2, "text": "#e2e8f0" },
-      "edgeStyles": { "alternate": { "stroke": "#f59e0b", "line": "dashed" } },
+      "node": {
+        "text": "#f8fafc",
+        "strokeWidth": 2
+      },
+      "edge": {
+        "stroke": "#64748b",
+        "text": "#e2e8f0",
+        "arrow": "triangle"
+      },
+      "group": {
+        "text": "#e2e8f0",
+        "strokeWidth": 2,
+        "line": "dashed"
+      },
+      "edgeStyles": {
+        "alternate": {
+          "stroke": "#f59e0b",
+          "line": "dashed"
+        }
+      },
       "legend": [
-        { "type": "node", "marker": "alpha", "label": "Alpha node", "style": { "fill": "#2563eb", "stroke": "#bfdbfe" } },
-        { "type": "node", "marker": "beta", "label": "Beta node", "style": { "fill": "#16a34a", "stroke": "#bbf7d0" } },
-        { "type": "node", "marker": "gamma", "label": "Gamma node", "style": { "fill": "#dc2626", "stroke": "#fecaca" } },
-        { "type": "edge", "marker": "alternate", "label": "Alternate relationship", "style": { "stroke": "#f59e0b", "line": "dashed" } }
+        {
+          "type": "node",
+          "marker": "alpha",
+          "label": "Alpha node",
+          "style": {
+            "fill": "#2563eb",
+            "stroke": "#bfdbfe"
+          }
+        },
+        {
+          "type": "node",
+          "marker": "beta",
+          "label": "Beta node",
+          "style": {
+            "fill": "#16a34a",
+            "stroke": "#bbf7d0"
+          }
+        },
+        {
+          "type": "node",
+          "marker": "gamma",
+          "label": "Gamma node",
+          "style": {
+            "fill": "#dc2626",
+            "stroke": "#fecaca"
+          }
+        },
+        {
+          "type": "edge",
+          "marker": "alternate",
+          "label": "Alternate relationship",
+          "style": {
+            "stroke": "#f59e0b",
+            "line": "dashed"
+          }
+        }
       ]
     },
-    "nodes": {
-      "alpha": { "fill": "#2563eb", "stroke": "#bfdbfe" },
-      "beta": { "fill": "#16a34a", "stroke": "#bbf7d0" },
-      "gamma": { "fill": "#dc2626", "stroke": "#fecaca" }
-    },
     "groups": {
-      "alpha-group": { "fill": "#172554", "stroke": "#60a5fa" },
-      "beta-group": { "fill": "#052e16", "stroke": "#4ade80" },
-      "gamma-group": { "fill": "#450a0a", "stroke": "#f87171" }
+      "alpha-group": {
+        "fill": "#172554",
+        "stroke": "#60a5fa"
+      },
+      "beta-group": {
+        "fill": "#052e16",
+        "stroke": "#4ade80"
+      },
+      "gamma-group": {
+        "fill": "#450a0a",
+        "stroke": "#f87171"
+      }
+    },
+    "nodes": {
+      "alpha": {
+        "fill": "#2563eb",
+        "stroke": "#bfdbfe"
+      },
+      "beta": {
+        "fill": "#16a34a",
+        "stroke": "#bbf7d0"
+      },
+      "gamma": {
+        "fill": "#dc2626",
+        "stroke": "#fecaca"
+      }
     },
     "edges": {}
   }

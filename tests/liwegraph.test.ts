@@ -86,6 +86,19 @@ test("materialiser preserves appearance and supports routing modes", async (): P
   assert.ok(materialised.layout!.edges.every(edge => edge.points?.length === 2));
 });
 
+test("shipped LIWE Graph examples have complete renderable layout", (): void => {
+  for (const path of [
+    "../docs/llm-user-iteration.liwegraph",
+    "../examples/nested-groups.liwegraph",
+    "../examples/three-node-appearance.liwegraph",
+    "../examples/two-node-appearance.liwegraph",
+  ]) {
+    const graph = parser.parse(readFileSync(new URL(path, import.meta.url), "utf8"));
+    assert.doesNotThrow(() => validator.validate(graph), `${path} must include complete layout`);
+    assert.ok(graph.layout!.global.width > graph.layout!.global.height, `${path} should keep the intended left-to-right presentation`);
+  }
+});
+
 test("canonical orthogonal materialisation keeps workflow routes axis-aligned", async (): Promise<void> => {
   const graph: LiweGraph = JSON.parse(readFileSync(new URL("../docs/llm-user-iteration.liwegraph", import.meta.url), "utf8"));
   const materialised = await liweGraphLayoutMaterialiser.materialiseLayout(graph);

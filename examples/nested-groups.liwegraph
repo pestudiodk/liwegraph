@@ -2,26 +2,165 @@
   "kind": "liwegraph/v1",
   "data": {
     "groups": [
-      { "id": "platform", "label": "Platform", "nodes": ["gateway"], "groups": ["runtime"] },
-      { "id": "runtime", "label": "Runtime", "nodes": ["api", "worker"], "groups": [] }
+      {
+        "id": "platform",
+        "label": "Platform",
+        "nodes": [
+          "gateway"
+        ],
+        "groups": [
+          "runtime"
+        ]
+      },
+      {
+        "id": "runtime",
+        "label": "Runtime",
+        "nodes": [
+          "api",
+          "worker"
+        ],
+        "groups": []
+      }
     ],
     "nodes": [
-      { "id": "gateway", "label": "Gateway" },
-      { "id": "api", "label": "API" },
-      { "id": "worker", "label": "Worker" }
+      {
+        "id": "gateway",
+        "label": "Gateway"
+      },
+      {
+        "id": "api",
+        "label": "API"
+      },
+      {
+        "id": "worker",
+        "label": "Worker"
+      }
     ],
     "edges": [
-      { "from": "gateway", "to": "api", "index": 1, "label": "forwards" },
-      { "from": "api", "to": "worker", "index": 1, "label": "dispatches" }
+      {
+        "from": "gateway",
+        "to": "api",
+        "index": 1,
+        "label": "forwards"
+      },
+      {
+        "from": "api",
+        "to": "worker",
+        "index": 1,
+        "label": "dispatches"
+      }
     ]
   },
-  "layout": null,
+  "layout": {
+    "global": {
+      "width": 768.6,
+      "height": 264
+    },
+    "groups": [
+      {
+        "id": "platform",
+        "x": 24,
+        "y": 24,
+        "width": 696.6,
+        "height": 186
+      },
+      {
+        "id": "runtime",
+        "x": 280.6,
+        "y": 64,
+        "width": 416,
+        "height": 122
+      }
+    ],
+    "nodes": [
+      {
+        "id": "gateway",
+        "x": 48,
+        "y": 104,
+        "width": 128,
+        "height": 58
+      },
+      {
+        "id": "api",
+        "x": 304.6,
+        "y": 104,
+        "width": 128,
+        "height": 58
+      },
+      {
+        "id": "worker",
+        "x": 544.6,
+        "y": 104,
+        "width": 128,
+        "height": 58
+      }
+    ],
+    "edges": [
+      {
+        "from": "gateway",
+        "to": "api",
+        "index": 1,
+        "points": [
+          [
+            176,
+            133
+          ],
+          [
+            304.6,
+            133
+          ]
+        ],
+        "label": {
+          "x": 196,
+          "y": 136,
+          "width": 59.6,
+          "height": 22
+        }
+      },
+      {
+        "from": "api",
+        "to": "worker",
+        "index": 1,
+        "points": [
+          [
+            432.6,
+            133
+          ],
+          [
+            544.6,
+            133
+          ]
+        ],
+        "label": {
+          "x": 452.6,
+          "y": 136,
+          "width": 72,
+          "height": 22
+        }
+      }
+    ]
+  },
   "appearance": {
     "global": {
       "background": "white",
-      "node": { "fill": "white", "stroke": "black", "text": "black", "strokeWidth": 2 },
-      "edge": { "fill": "white", "stroke": "black", "text": "black", "arrow": "triangle" },
-      "group": { "fill": "white", "stroke": "black", "text": "black", "strokeWidth": 2 }
+      "node": {
+        "fill": "white",
+        "stroke": "black",
+        "text": "black",
+        "strokeWidth": 2
+      },
+      "edge": {
+        "fill": "white",
+        "stroke": "black",
+        "text": "black",
+        "arrow": "triangle"
+      },
+      "group": {
+        "fill": "white",
+        "stroke": "black",
+        "text": "black",
+        "strokeWidth": 2
+      }
     },
     "groups": {},
     "nodes": {},

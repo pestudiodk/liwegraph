@@ -77,6 +77,8 @@ npm run render:svg -- graph.liwegraph graph.svg
 
 The renderer installs its canonical stylesheet once per document and marks its host with `liwegraph-host`. Applications can supply selection/open callbacks and their own zoom host behavior without coupling graph semantics to navigation.
 
+The `.liwegraph` files in `examples/` and `docs/llm-user-iteration.liwegraph` include complete layout and can be validated or rendered directly. For a data-only graph with `layout: null`, use `materialise` first or `render --skip-layout`.
+
 See [`docs/format.md`](docs/format.md) for the authoritative format contract and [`docs/canonical-tool.md`](docs/canonical-tool.md) for the canonical implementation and CLI.
 
 ## License
