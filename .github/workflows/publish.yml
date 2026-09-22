@@ -14,7 +14,6 @@ jobs:
       github.ref == 'refs/heads/main'
     permissions:
       contents: read
-      id-token: write
     runs-on: ubuntu-latest
     environment: npm
     steps:
@@ -43,7 +42,9 @@ jobs:
           npm pack --pack-destination /tmp
           version=$(node -p "require('./package.json').version")
           echo "LIWEGRAPH_TARBALL=/tmp/pestudiodk-liwegraph-${version}.tgz" >> "$GITHUB_ENV"
+      # Bootstrap the new package with the short-lived npm token. After 1.0.0,
+      # configure a trusted publisher and switch this job to OIDC + provenance.
       - name: Publish exact tarball
-        run: npm publish "$LIWEGRAPH_TARBALL" --access public --provenance
+        run: npm publish "$LIWEGRAPH_TARBALL" --access public --no-provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
