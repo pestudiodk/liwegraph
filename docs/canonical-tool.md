@@ -57,9 +57,13 @@ It preserves semantic data and appearance and produces deterministic layout.
 Existing layout may be replaced; callers that need fresh layout should provide a
 graph with `layout: null`.
 
-The layout engine materialises flat group references from the inside out:
+The canonical materialiser delegates primary layout direction to the layout
+engine default and uses compact orthogonal spacing. Flat group references are
+materialised from the inside out:
 completed child groups act as nodes while their parent is laid out. This creates
-nested group bounds containing direct nodes and child groups.
+nested group bounds containing direct nodes and child groups. Edge routes and
+labels are produced by the canonical layout engine together, so labels remain
+part of route spacing rather than being adjusted after layout.
 
 ## DOM mounting
 

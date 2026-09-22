@@ -4,11 +4,12 @@ import { CanonicalLiweGraphMounter } from "./renderer.js";
 
 export interface LiweGraphStandaloneSvgOptions {
   legend?: boolean;
+  scale?: number;
 }
 
 export class CanonicalLiweGraphSvgRenderer {
   static readonly svgNamespace = "http://www.w3.org/2000/svg";
-  static readonly scale = 2;
+  static readonly scale = 1;
   readonly mounter = new CanonicalLiweGraphMounter();
 
   graphStyle(element, property, fallback) {
@@ -97,9 +98,15 @@ export class CanonicalLiweGraphSvgRenderer {
       if (!svg) throw new Error("Renderer did not produce an SVG diagram.");
       if (options.legend) this.appendLegend(svg, graph);
       this.inlineStyles(svg);
+      this.setAttributes(svg, {
+        preserveAspectRatio: "xMidYMid meet",
+        "shape-rendering": "geometricPrecision",
+        "text-rendering": "geometricPrecision",
+      });
       const width = Number.parseFloat(svg.getAttribute("width") ?? "");
       const height = Number.parseFloat(svg.getAttribute("height") ?? "");
-      if (Number.isFinite(width) && Number.isFinite(height)) { svg.setAttribute("width", String(width * CanonicalLiweGraphSvgRenderer.scale)); svg.setAttribute("height", String(height * CanonicalLiweGraphSvgRenderer.scale)); }
+      const scale = Number.isFinite(options.scale) && options.scale > 0 ? options.scale : CanonicalLiweGraphSvgRenderer.scale;
+      if (Number.isFinite(width) && Number.isFinite(height)) { svg.setAttribute("width", String(width * scale)); svg.setAttribute("height", String(height * scale)); }
       const background = dom.window.document.createElementNS(CanonicalLiweGraphSvgRenderer.svgNamespace, "rect");
       this.setAttributes(background, { width: "100%", height: "100%", fill: graph.appearance?.global.background ?? "#030712" });
       svg.prepend(background);

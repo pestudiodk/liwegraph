@@ -1,0 +1,379 @@
+{
+  "kind": "liwegraph/v1",
+  "data": {
+    "groups": [
+      {
+        "id": "collaboration",
+        "label": "Collaboration",
+        "nodes": ["user", "agent"],
+        "groups": []
+      },
+      {
+        "id": "processing",
+        "label": "Agent-run tools",
+        "nodes": ["validator", "materialiser", "renderer"],
+        "groups": []
+      },
+      {
+        "id": "outputs",
+        "label": "Outputs",
+        "nodes": ["viewer", "svg"],
+        "groups": []
+      }
+    ],
+    "nodes": [
+      {
+        "id": "user",
+        "label": "User",
+        "kind": "human",
+        "content": {
+          "$text": "Describes intent, inspects the rendered result, and asks for the next change."
+        }
+      },
+      {
+        "id": "agent",
+        "label": "agent",
+        "kind": "agent",
+        "content": {
+          "$text": "Changes the graph's data and appearance with the user. It leaves layout calculation to the materialiser."
+        }
+      },
+      {
+        "id": "graph",
+        "label": "LIWE Graph",
+        "kind": "artifact",
+        "content": {
+          "$text": "One document keeps data, layout, and appearance separate. The LLM authors data and appearance; layout is derived."
+        }
+      },
+      {
+        "id": "validator",
+        "label": "Validator",
+        "kind": "process",
+        "content": {
+          "$text": "Checks the graph's data and appearance, then reports diagnostics or accepts it for layout."
+        }
+      },
+      {
+        "id": "materialiser",
+        "label": "Materialiser",
+        "kind": "process",
+        "content": {
+          "$text": "Calculates deterministic node positions, group bounds, edge routes, and label boxes."
+        }
+      },
+      {
+        "id": "renderer",
+        "label": "Renderer",
+        "kind": "process",
+        "content": {
+          "$text": "Uses validated data, derived layout, and appearance to create the interactive and standalone SVG views."
+        }
+      },
+      {
+        "id": "viewer",
+        "label": "LIWE Graph viewer",
+        "kind": "view",
+        "content": {
+          "$text": "Displays the interactive graph so the user can inspect nodes, relationships, and selected content."
+        }
+      },
+      {
+        "id": "svg",
+        "label": "Standalone SVG",
+        "kind": "output",
+        "content": {
+          "$text": "A shareable SVG export with inline styles and an optional legend."
+        }
+      }
+    ],
+    "edges": [
+      {
+        "from": "user",
+        "to": "agent",
+        "index": 1,
+        "kind": "intent",
+        "label": "1 · describe intent"
+      },
+      {
+        "from": "agent",
+        "to": "graph",
+        "index": 1,
+        "kind": "edit-data",
+        "label": "2 · edit data"
+      },
+      {
+        "from": "agent",
+        "to": "graph",
+        "index": 2,
+        "kind": "edit-appearance",
+        "label": "3 · edit appearance"
+      },
+      {
+        "from": "agent",
+        "to": "validator",
+        "index": 1,
+        "kind": "orchestrate",
+        "label": "4 · run validator"
+      },
+      {
+        "from": "validator",
+        "to": "agent",
+        "index": 1,
+        "kind": "diagnostic",
+        "label": "5 · return diagnostics if invalid"
+      },
+      {
+        "from": "validator",
+        "to": "graph",
+        "index": 1,
+        "kind": "validate",
+        "label": "6 · validate graph"
+      },
+      {
+        "from": "agent",
+        "to": "materialiser",
+        "index": 1,
+        "kind": "orchestrate",
+        "label": "7 · request layout"
+      },
+      {
+        "from": "materialiser",
+        "to": "graph",
+        "index": 1,
+        "kind": "materialise",
+        "label": "8 · derive layout"
+      },
+      {
+        "from": "agent",
+        "to": "renderer",
+        "index": 1,
+        "kind": "orchestrate",
+        "label": "9 · request render"
+      },
+      {
+        "from": "renderer",
+        "to": "graph",
+        "index": 1,
+        "kind": "render",
+        "label": "10 · render graph"
+      },
+      {
+        "from": "renderer",
+        "to": "viewer",
+        "index": 1,
+        "kind": "mount",
+        "label": "11 · mount viewer"
+      },
+      {
+        "from": "renderer",
+        "to": "svg",
+        "index": 1,
+        "kind": "export",
+        "label": "12 · export SVG"
+      },
+      {
+        "from": "viewer",
+        "to": "graph",
+        "index": 1,
+        "kind": "view",
+        "label": "13 · read graph for viewing"
+      },
+      {
+        "from": "agent",
+        "to": "viewer",
+        "index": 1,
+        "kind": "return",
+        "label": "14 · return rendered graph"
+      },
+      {
+        "from": "user",
+        "to": "viewer",
+        "index": 1,
+        "kind": "inspect",
+        "label": "15 · inspect viewer"
+      },
+      {
+        "from": "user",
+        "to": "svg",
+        "index": 1,
+        "kind": "inspect",
+        "label": "16 · review export"
+      },
+      {
+        "from": "user",
+        "to": "agent",
+        "index": 2,
+        "kind": "feedback",
+        "label": "17 · request next iteration"
+      }
+    ]
+  },
+  "layout": null,
+  "appearance": {
+    "global": {
+      "background": "#0b1020",
+      "node": {
+        "fill": "#111827",
+        "stroke": "#f8fafc",
+        "text": "#f8fafc",
+        "strokeWidth": 2
+      },
+      "nodeStyles": {
+        "human": {
+          "fill": "#111827",
+          "stroke": "#f8fafc",
+          "text": "#f8fafc"
+        },
+        "agent": {
+          "fill": "#111827",
+          "stroke": "#f8fafc",
+          "text": "#f8fafc"
+        },
+        "artifact": {
+          "fill": "#111827",
+          "stroke": "#f8fafc",
+          "text": "#f8fafc"
+        },
+        "process": {
+          "fill": "#111827",
+          "stroke": "#f8fafc",
+          "text": "#f8fafc"
+        },
+        "view": {
+          "fill": "#111827",
+          "stroke": "#f8fafc",
+          "text": "#f8fafc"
+        },
+        "output": {
+          "fill": "#111827",
+          "stroke": "#f8fafc",
+          "text": "#f8fafc"
+        }
+      },
+      "edge": {
+        "fill": "#0b1020",
+        "stroke": "#f8fafc",
+        "text": "#f8fafc",
+        "strokeWidth": 2,
+        "arrow": "triangle"
+      },
+      "edgeStyles": {
+        "edit-data": {
+          "stroke": "#f8fafc",
+          "line": "dashed"
+        },
+        "edit-appearance": {
+          "stroke": "#f8fafc",
+          "line": "dashed"
+        },
+        "validate": {
+          "stroke": "#f8fafc",
+          "line": "dashed"
+        },
+        "materialise": {
+          "stroke": "#f8fafc",
+          "line": "dashed"
+        },
+        "render": {
+          "stroke": "#f8fafc",
+          "line": "dashed"
+        },
+        "feedback": {
+          "stroke": "#f8fafc"
+        },
+        "diagnostic": {
+          "stroke": "#f8fafc"
+        },
+        "view": {
+          "stroke": "#f8fafc",
+          "line": "dashed"
+        }
+      },
+      "group": {
+        "fill": "#0b1020",
+        "stroke": "#f8fafc",
+        "text": "#f8fafc",
+        "strokeWidth": 2,
+        "line": "dashed"
+      },
+      "legend": [
+        {
+          "type": "node",
+          "marker": "human",
+          "label": "User",
+          "style": {
+            "fill": "#111827",
+            "stroke": "#f8fafc"
+          }
+        },
+        {
+          "type": "node",
+          "marker": "agent",
+          "label": "Agent",
+          "style": {
+            "fill": "#111827",
+            "stroke": "#f8fafc"
+          }
+        },
+        {
+          "type": "node",
+          "marker": "artifact",
+          "label": "LIWE Graph document",
+          "style": {
+            "fill": "#111827",
+            "stroke": "#f8fafc"
+          }
+        },
+        {
+          "type": "node",
+          "marker": "process",
+          "label": "Validator, materialiser, or renderer",
+          "style": {
+            "fill": "#111827",
+            "stroke": "#f8fafc"
+          }
+        },
+        {
+          "type": "node",
+          "marker": "view",
+          "label": "LIWE Graph viewer",
+          "style": {
+            "fill": "#111827",
+            "stroke": "#f8fafc"
+          }
+        },
+        {
+          "type": "node",
+          "marker": "output",
+          "label": "Standalone SVG",
+          "style": {
+            "fill": "#111827",
+            "stroke": "#f8fafc"
+          }
+        },
+        {
+          "type": "edge",
+          "marker": "edit-data",
+          "label": "Acts on stored graph document",
+          "style": {
+            "stroke": "#f8fafc",
+            "line": "dashed"
+          }
+        },
+        {
+          "type": "edge",
+          "marker": "intent",
+          "label": "Usage, orchestration, or feedback",
+          "style": {
+            "stroke": "#f8fafc",
+            "line": "solid"
+          }
+        }
+      ]
+    },
+    "groups": {},
+    "nodes": {},
+    "edges": {}
+  }
+}

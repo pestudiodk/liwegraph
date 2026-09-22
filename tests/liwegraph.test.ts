@@ -1,5 +1,6 @@
 // @ts-nocheck
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import test from "node:test";
 import { liweGraphExtension, liweGraphKind, liweGraphMimeType, type LiweGraph, type LiweGraphLayoutGroup } from "../src/model/liwegraph.ts";
 import { CanonicalLiweGraphParser } from "../src/model/liwegraph-parser.ts";
@@ -83,6 +84,16 @@ test("materialiser preserves appearance and supports routing modes", async (): P
   const materialised = await liweGraphLayoutMaterialiser.materialiseLayout(graph, "direct");
   assert.deepEqual(materialised.appearance, graph.appearance);
   assert.ok(materialised.layout!.edges.every(edge => edge.points?.length === 2));
+});
+
+test("canonical orthogonal materialisation keeps workflow routes axis-aligned", async (): Promise<void> => {
+  const graph: LiweGraph = JSON.parse(readFileSync(new URL("../docs/llm-user-iteration.liwegraph", import.meta.url), "utf8"));
+  const materialised = await liweGraphLayoutMaterialiser.materialiseLayout(graph);
+  validator.validate(materialised);
+  for (const edge of materialised.layout!.edges) {
+    const routes = edge.points ? [edge.points] : edge.segments ?? [];
+    assert.ok(routes.every(points => points.slice(1).every((point, index) => point[0] === points[index][0] || point[1] === points[index][1])), `${edge.from} -> ${edge.to} is not orthogonal`);
+  }
 });
 
 test("complete layout requires exactly one node and edge entry", async (): Promise<void> => {
